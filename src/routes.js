@@ -1,5 +1,15 @@
+/**
+ * As partes que estão comentadas foram feitas nos momentos que ocorria uma grande alteração
+ * no código, como partes que foram colocadas em outros arquivos, ou até partes que foram apagadas do código
+ * 
+ * Obs: Todos os passos de forma minuciosa foram seguidos assim como foi mostrado na aula.
+*/
+
 const express = require('express')
 const routes = express.Router()
+// const knex = require('knex')
+// const crypto = require('crypto')
+// const connection = require('./database/connection')
 const UserController = require('./controller/UserController');
 
 routes.get('/users', UserController.list);
@@ -8,11 +18,7 @@ routes.get('/users/:id', UserController.show);
 
 module.exports = routes;
 
-// const knex = require('knex')
-
-// const crypto = require('crypto')
-// const connection = require('./database/connection')
-
+//------------------------------------------------------
 // routes.post('/users', async (req, res) => {
 //     const id = crypto.randomBytes(4).toString('hex')
 //     const {nome, email, idade, empresa} = req.body
@@ -50,6 +56,7 @@ module.exports = routes;
 //     res.json(params)
 // })
 
+//---------------------------------------------------
 /**
  * Query: Selct * from users;
  * uery Builders: table('user').select(*).where()
