@@ -1,35 +1,54 @@
 const express = require('express')
 const routes = express.Router()
+const UserController = require('./controller/UserController');
 
-routes.get('/users', (req, res) => {
-    const params = req.query;
-    console.log(params)
-    res.json(params)
-})
-
-routes.get('/users', (req, res) => {
-    const params = req.query;
-    console.log(params)
-    res.json({
-        nome: 'wesley',
-        empresa: 'UESB'
-    })
-})
-
-routes.post('/users/:id', (req, res) => {
-    const params = req.params;
-    console.log(params)
-    res.json(params)
-})
-
-
-routes.post('/users', (req, res) => {
-    const params = req.body;
-    console.log(params)
-    res.json(params)
-})
+routes.get('/users', UserController.list);
+routes.post('/users', UserController.create);
+routes.get('/users/:id', UserController.show);
 
 module.exports = routes;
+
+// const knex = require('knex')
+
+// const crypto = require('crypto')
+// const connection = require('./database/connection')
+
+// routes.post('/users', async (req, res) => {
+//     const id = crypto.randomBytes(4).toString('hex')
+//     const {nome, email, idade, empresa} = req.body
+//     await connection('users').insert({
+//         id,
+//         nome,
+//         email,
+//         idade,
+//         empresa
+//     });
+//     console.log(id)
+//     res.json();
+// })
+
+// routes.get('/users', async (req, res) => {
+//     const users = await connection('users').select('*');
+//     res.json(users);
+// })
+
+// routes.get('/users', (req, res) => {
+//     const params = req.query;
+//     console.log(params)
+//     res.json(params)
+// })
+
+// routes.post('/users/:id', (req, res) => {
+//     const params = req.params;
+//     console.log(params)
+//     res.json(params)
+// })
+
+// routes.post('/users', (req, res) => {
+//     const params = req.body;
+//     console.log(params)
+//     res.json(params)
+// })
 
 /**
  * Query: Selct * from users;
@@ -62,7 +81,6 @@ module.exports = routes;
 //     res.json({
 //         nome: 'Wesley',
 //         empresa: 'UESB',
-//         requisicao: 'pu'
 //     })
 // }) 
 
