@@ -27,5 +27,13 @@ module.exports = {
                     .where('id', id)
                     .select('*');
         return res.json(user);
+    },
+
+    async delete(req,res){
+        const {id} = req.params;
+        await connection('users').where('id', id).delete();
+        return res.status(204).send();
     }
+
+
 }
